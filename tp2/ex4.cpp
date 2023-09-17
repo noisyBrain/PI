@@ -9,30 +9,57 @@
 
 */
 
-#include <algorithm>
 #include<iostream>
-#include<algorithm>
 
 using namespace std;
 
-int main () {
-  int aux = 0;
-  int promptUser = 0;
-  int arrayLength = 5;
-  int arrayOfNumbers[arrayLength];
+const int PD = 5;
 
-  for (int i = 0; i < 5; i++) {
-    cout << "Ingresá el número: " << endl;
-    cin >> promptUser;
+int insertInOrder(int array[], int ld, int newData) {
+  int i = 0;
 
-    arrayOfNumbers[i] = promptUser;
+  while(i < ld && array[i] < newData) {
+    i++;
   }
 
-  std::sort(arrayOfNumbers, arrayOfNumbers + arrayLength);
+  for (int j = ld; j > i; j--) {
+    array[j] = array[j-1];
+  }
 
-  cout << "\nLos números ordenados son: \n" << endl;
-  for (int i = 0; i < arrayLength; i++) {
-    cout << arrayOfNumbers[i] << endl;
+  array[i] = newData;
+  return ld+1;
+}
+
+int insertInArray(int array[], int ld) {
+  int newNumber = 0;
+
+  while (ld < PD) {
+    cout << "Ingresá otro número: " << endl;
+    cin >> newNumber;
+
+    if (ld < PD) {
+      ld = insertInOrder(array, ld, newNumber);
+    }
+  }
+
+  return ld;
+}
+
+int main () {
+  int arrayOfNumbers[PD];
+  int logicDimension = 0;
+
+  insertInArray(arrayOfNumbers, logicDimension);
+
+  cout << "Estos son los números ordenados: " << endl;
+
+  for (int k = 0; k < PD; k++) {
+    if (k + 1 == PD) {
+      cout << arrayOfNumbers[k] << endl;
+
+    } else {
+      cout << arrayOfNumbers[k] << ", ";
+    }
   }
 
   return 0;
