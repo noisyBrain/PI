@@ -6,7 +6,6 @@ incrementa en uno el valor de cada elemento de dicho arreglo. A√±adir otros par√
 */
 
 #include<iostream>
-#include<iterator>
 
 using namespace std;
 
