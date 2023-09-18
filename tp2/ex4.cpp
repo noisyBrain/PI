@@ -45,22 +45,25 @@ int insertInArray(int array[], int ld) {
   return ld;
 }
 
+void printNumbers(int array[]) {
+  cout << "Estos son los números ordenados: " << endl;
+
+  for (int k = 0; k < PD; k++) {
+    if (k + 1 == PD) {
+      cout << array[k] << endl;
+
+    } else {
+      cout << array[k] << ", ";
+    }
+  }
+}
+
 int main () {
   int arrayOfNumbers[PD];
   int logicDimension = 0;
 
   insertInArray(arrayOfNumbers, logicDimension);
-
-  cout << "Estos son los números ordenados: " << endl;
-
-  for (int k = 0; k < PD; k++) {
-    if (k + 1 == PD) {
-      cout << arrayOfNumbers[k] << endl;
-
-    } else {
-      cout << arrayOfNumbers[k] << ", ";
-    }
-  }
+  printNumbers(arrayOfNumbers);
 
   return 0;
 }
