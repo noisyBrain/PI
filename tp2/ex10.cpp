@@ -51,8 +51,9 @@ void insertInArray(int array[], int PD, int ld) {
 
 int main () {
   int ld = 0; // logic dimension;
+  int membersWhoPaid[PD];
 
-  didUserPaid();
+  insertInArray(membersWhoPaid, PD, ld);
   
   return 0;
 }
