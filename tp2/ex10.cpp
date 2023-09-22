@@ -25,14 +25,14 @@ int prinMenu() {
   cout << "[3] Para eliminar el DNI de un socio" << endl;
 }
 
-bool didUserPaid() {
-  char userResponse = ' ';
+int askForDNI() {
+  int DNI = 0;
 
-  do {
-    cout << "Desea pagar la cuota? s/n..." << endl;
-    cin >> userResponse;
+  cout << "Ingresá tu DNI (todo junto, sin puntos): ";
+  cin >> DNI;
 
-    bool invalidInput = tolower(userResponse) != 'y' && tolower(userResponse) != 'n';
+  return DNI;
+}
 
     if (invalidInput) {
       cout << "Entrada inválida, volvé a intentarlo!\n";
