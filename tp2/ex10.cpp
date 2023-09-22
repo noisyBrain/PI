@@ -36,16 +36,18 @@ int askForDNI() {
   return DNI;
 }
 
-    if (invalidInput) {
-      cout << "Entrada inválida, volvé a intentarlo!\n";
+void insertInArray(int array[], int PD, int ld) {
+  int DNI = askForDNI();
+
+  while (ld < PD) {
+    array[ld] = DNI;
+    ld++;
+
+    if (ld < PD) {
+      DNI = askForDNI();
     }
-
-  } while(tolower(userResponse) != 'y' && tolower(userResponse) != 'n');
-
-  return userResponse == 'y';
-
-};
-
+  }
+}
 
 int main () {
   int ld = 0; // logic dimension;
