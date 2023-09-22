@@ -30,6 +30,8 @@ void prinMenu() {
 
 int takeOption() {
   int option = 5;
+
+  cout << "\nIngresá alguna de las opciones del menú: ";
   cin >> option;
 
   return option;
@@ -50,6 +52,7 @@ void insertInArray(int array[], int &ld) {
   if (ld < PD) {
     array[ld] = DNI;
     ld++;
+    cout << "Socio con DNI: " << DNI << " agregado correctamente." << endl;
     return;
   }
 
@@ -81,6 +84,11 @@ void deleteFromArray(int arr[], int &ld) {
   int i = 0;
   int DNI = askForDNI();
 
+  if (ld == 0) {
+    cout << "No hay socios registrados..." << endl;
+    return;
+  }
+
   while (i < ld && arr[i] != DNI) {
     i++;
   }
@@ -92,6 +100,8 @@ void deleteFromArray(int arr[], int &ld) {
 
     ld--;
   }
+
+  cout << "Socio con DNI: " << DNI << " eliminado correctamente." << endl;
 }
 
 void startProgram(int arr[], int PD, int &ld) {
@@ -109,14 +119,17 @@ void startProgram(int arr[], int PD, int &ld) {
 
       case 2:
         searchInArray(arr, ld);
+        break;
 
       case 3:
         deleteFromArray(arr, ld);
-
         break;
+
       default:
+        cout << "\nIngresaste una opción inválida, volvé a intentarlo..." << endl;
         break;
     }
+
     clearAfterEnter();
     prinMenu();
     option = takeOption();
@@ -128,6 +141,8 @@ int main () {
   int membersWhoPaid[PD];
 
   startProgram(membersWhoPaid, PD, ld);
+
+  cout << "\nEstos son los socios que pagaron: " << endl;
   printArray(membersWhoPaid, ld);
   
   return 0;
