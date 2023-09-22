@@ -28,6 +28,13 @@ void prinMenu() {
   cout << "[3] Para eliminar el DNI de un socio" << endl;
 }
 
+int takeOption() {
+  int option = 5;
+  cin >> option;
+
+  return option;
+}
+
 int askForDNI() {
   int DNI = 0;
 
