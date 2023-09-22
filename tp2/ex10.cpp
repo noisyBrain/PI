@@ -136,14 +136,23 @@ void startProgram(int arr[], int PD, int &ld) {
   }
 }
 
+void printMembersWhoPaid(int membersWhoPaid[], int ld) {
+  if (ld > 0) {
+    cout << "\nEstos son los socios que pagaron: " << endl;
+    printArray(membersWhoPaid, ld);
+    return;
+  }
+
+  cout << "\nNo existen socios registrados\n" << endl;
+}
+
 int main () {
   int ld = 0; // logic dimension;
   int membersWhoPaid[PD];
 
   startProgram(membersWhoPaid, PD, ld);
-
-  cout << "\nEstos son los socios que pagaron: " << endl;
-  printArray(membersWhoPaid, ld);
+  printMembersWhoPaid(membersWhoPaid, ld);
+  showEndProgram();
   
   return 0;
 }
