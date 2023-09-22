@@ -14,6 +14,7 @@ Escribir un programa que permita al usuario gestionar los pagos de la cuota de u
 */
 
 #include<iostream>
+#include "resources.h"
 
 using namespace std;
 
@@ -46,6 +47,9 @@ void insertInArray(int array[], int PD, int ld) {
     if (ld < PD) {
       DNI = askForDNI();
     }
+    clearAfterEnter();
+    prinMenu();
+    option = takeOption();
   }
 }
 

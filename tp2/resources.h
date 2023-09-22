@@ -3,4 +3,10 @@
 
 void printArray(int array[], int ld);
 
+void clearScreen();
+
+void clearAfterEnter();
+
+void showEndProgram();
+
 #endif
