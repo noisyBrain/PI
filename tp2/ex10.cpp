@@ -56,6 +56,27 @@ void insertInArray(int array[], int &ld) {
   cout << "Espacio lleno..." << endl;
 }
 
+void searchInArray(int array[], int ld) {
+  int searchedDNI = 0;
+
+  cout << "Ingrese el DNI a buscar: " << endl;
+  cin >> searchedDNI;
+
+  if (ld == 0) {
+    cout << "No hay socios registrados..." << endl;;
+    return;
+  }
+
+  for (int i = 0; i < ld; i++) {
+    if (array[i] == searchedDNI) {
+      cout << "Cuota al día!" << endl;
+      return;
+    }
+  }
+
+  cout << "Socio en deuda!" << endl;
+}
+
 void startProgram(int arr[], int PD, int &ld) {
   clearScreen();
   prinMenu();
@@ -69,6 +90,10 @@ void startProgram(int arr[], int PD, int &ld) {
         insertInArray(arr, ld);
         break;
 
+      case 2:
+        searchInArray(arr, ld);
+
+        break;
       default:
         break;
     }
