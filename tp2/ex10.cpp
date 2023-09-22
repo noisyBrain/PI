@@ -44,10 +44,10 @@ int askForDNI() {
   return DNI;
 }
 
-void insertInArray(int array[], int PD, int ld) {
+void insertInArray(int array[], int &ld) {
   int DNI = askForDNI();
 
-  while (ld < PD) {
+  if (ld < PD) {
     array[ld] = DNI;
     ld++;
 
