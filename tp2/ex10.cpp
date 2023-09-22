@@ -50,9 +50,27 @@ void insertInArray(int array[], int &ld) {
   if (ld < PD) {
     array[ld] = DNI;
     ld++;
+    return;
+  }
 
-    if (ld < PD) {
-      DNI = askForDNI();
+  cout << "Espacio lleno..." << endl;
+}
+
+void startProgram(int arr[], int PD, int &ld) {
+  clearScreen();
+  prinMenu();
+
+  int option = takeOption();
+
+  while (option != 0) {
+
+    switch (option) {
+      case 1:
+        insertInArray(arr, ld);
+        break;
+
+      default:
+        break;
     }
     clearAfterEnter();
     prinMenu();
@@ -64,7 +82,8 @@ int main () {
   int ld = 0; // logic dimension;
   int membersWhoPaid[PD];
 
-  insertInArray(membersWhoPaid, PD, ld);
+  startProgram(membersWhoPaid, PD, ld);
+  printArray(membersWhoPaid, ld);
   
   return 0;
 }
