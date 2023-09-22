@@ -77,6 +77,23 @@ void searchInArray(int array[], int ld) {
   cout << "Socio en deuda!" << endl;
 }
 
+void deleteFromArray(int arr[], int &ld) {
+  int i = 0;
+  int DNI = askForDNI();
+
+  while (i < ld && arr[i] != DNI) {
+    i++;
+  }
+
+  if (arr[i] == DNI) {
+    for (int j = i; j < ld - 1; j++) {
+      arr[j] = arr[j+1];
+    }
+
+    ld--;
+  }
+}
+
 void startProgram(int arr[], int PD, int &ld) {
   clearScreen();
   prinMenu();
@@ -92,6 +109,9 @@ void startProgram(int arr[], int PD, int &ld) {
 
       case 2:
         searchInArray(arr, ld);
+
+      case 3:
+        deleteFromArray(arr, ld);
 
         break;
       default:
