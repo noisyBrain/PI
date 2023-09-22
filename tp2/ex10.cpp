@@ -17,7 +17,13 @@ Escribir un programa que permita al usuario gestionar los pagos de la cuota de u
 
 using namespace std;
 
-const int PD = 200; // Physical Dimension
+int prinMenu() {
+  cout << "*** Gestión de cuotas ***" << endl;
+  cout << "[0] Para salir" << endl;
+  cout << "[1] Para agregar un DNI de socio" << endl;
+  cout << "[2] Para buscar un socio" << endl;
+  cout << "[3] Para eliminar el DNI de un socio" << endl;
+}
 
 bool didUserPaid() {
   char userResponse = ' ';
