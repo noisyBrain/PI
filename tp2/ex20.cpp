@@ -25,12 +25,11 @@ struct Book {
 
 void printBooks(Book arr[], int ld) {
   for (int i = 0; i < ld; i++) {
-    cout << arr[i].title << endl;
-    cout << arr[i].author << endl;
-    cout << arr[i].publisher << endl;
-    cout << arr[i].pages << endl;
-    cout << arr[i].ISBN << endl;
-    cout << '\n' << endl;
+    cout << "\nTitulo: " << arr[i].title << endl;
+    cout << "Autor: " << arr[i].author << endl;
+    cout << "Editorial: " << arr[i].publisher << endl;
+    cout << "Cantidad de páginas: " << arr[i].pages << endl;
+    cout << "ISBN: " << arr[i].ISBN << endl;
   }
 }
 
@@ -38,26 +37,26 @@ void insertInArray(Book arr[], Book newBook, int &ld) {
   if (ld < MAX_BOOKS) {
     arr[ld] = newBook;
     ld++;
-  } else cout << "Cartón lleno.." << endl;
+  } else cout << "Almacenamiento lleno..." << endl;
 }
 
 void promptNewBook(Book arr[], int ld) {
   Book newBook;
 
   do {
-    cout << "Ingresá el título del libro: " << endl;
+    cout << "\nIngresá el título del libro: " << '\n';
     getline(cin >> ws, newBook.title);
 
-    cout << "Ingresá el autor del libro: " << endl;
+    cout << "\nIngresá el autor del libro: " << '\n';
     getline(cin >> ws, newBook.author);
 
-    cout << "Ingresá la editorial del libro: " << endl;
+    cout << "\nIngresá la editorial del libro: " << '\n';
     getline(cin >> ws, newBook.publisher);
 
-    cout << "Ingresá la cantidad de páginas del libro: " << endl;
+    cout << "\nIngresá la cantidad de páginas del libro: " << '\n';
     cin >> newBook.pages;
 
-    cout << "Ingresá el ISBN del libro: " << endl;
+    cout << "\nIngresá el ISBN del libro: " << '\n';
     cin >> newBook.ISBN;
 
     insertInArray(arr, newBook, ld);
