@@ -40,8 +40,19 @@ void insertInArray(Book arr[], Book newBook, int &ld) {
   } else cout << "Almacenamiento lleno..." << endl;
 }
 
+string upperInput(string input) {
+  string upperedInput = "";
+
+  for (int i = 0; i < input.length(); i++) {
+    upperedInput += toupper(input[i]);
+  }
+
+  return upperedInput;
+}
+
 void promptNewBook(Book arr[], int ld) {
   Book newBook;
+  string upperedTitle = "";
 
   do {
     cout << "\nIngresá el título del libro: " << '\n';
@@ -61,9 +72,10 @@ void promptNewBook(Book arr[], int ld) {
 
     insertInArray(arr, newBook, ld);
 
-  } while(newBook.title != "EL HOBBIT");
-    printBooks(arr, ld);
+    upperedTitle = upperInput(newBook.title); 
+  } while(upperedTitle != "EL HOBBIT");
 
+    printBooks(arr, ld);
 }
 
 int main (int argc, char *argv[]) {
