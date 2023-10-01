@@ -18,7 +18,18 @@
 
 using namespace std;
 
+const int MAX_CAP = 150;
+
+struct Guest {
+  string firstName;
+  string lastName;
+  string gender;
+  int age;
+};
+
 int main () {
+  Guest guests[MAX_CAP];
+
   
   return 0;
 }
