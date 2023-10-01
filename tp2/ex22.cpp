@@ -84,12 +84,17 @@ void printGuests(Guest guests[], int ld) {
   }
 }
 
+void countGuests(int ld) {
+  cout << "La cantidad de invitados es de: "<< ld << endl;
+}
+
 int main () {
   int ld = 0; // logic dimension
   Guest guests[MAX_CAP];
 
   startProgram(guests, ld);
   printGuests(guests, ld);
+  countGuests(ld);
 
   showEndProgram();
   
