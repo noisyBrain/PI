@@ -18,7 +18,7 @@
 
 using namespace std;
 
-const int MAX_CAP = 150;
+const int MAX_CAP = 150; // physic dimension
 
 struct Guest {
   string firstName;
@@ -28,6 +28,7 @@ struct Guest {
 };
 
 int main () {
+  int ld = 0; // logic dimension
   Guest guests[MAX_CAP];
 
   
