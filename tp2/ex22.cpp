@@ -15,6 +15,7 @@
 
 #include<iostream>
 #include<string>
+#include "resources.h"
 
 using namespace std;
 
@@ -27,10 +28,70 @@ struct Guest {
   int age;
 };
 
+void printWelcome() {
+  clearScreen();
+  cout << "\t *** Lista de Invitados ***\n";
+}
+
+bool isFull(int ld) { return ld == MAX_CAP; }
+
+void addGuest(Guest guests[], Guest newGuest, int &ld) {
+    if (isFull(ld)) {
+      cout << "¡La lista de invitados está llena!" << endl;
+      return;
+    }
+
+    guests[ld] = newGuest;
+    ld++;
+}
+
+void promptNewGuest(Guest &newGuest) {
+  clearAfterEnter();
+  cout << "Ingresá el nombre del invitado. [ZZZ] para terminar" << endl;
+  getline(cin >> ws, newGuest.firstName);
+}
+
+void startProgram(Guest guests[], int &ld) {
+  Guest newGuest;
+
+  printWelcome();
+  promptNewGuest(newGuest);
+
+  while(newGuest.firstName != "ZZZ") {
+    cout << "Ingrese el apellido del invitado: ";
+    getline(cin >> ws, newGuest.lastName);
+
+    cout << "Ingrese el género del invitado: ";
+    cin >> newGuest.gender;
+
+    cout << "Ingrese la edad del invitado: ";
+    cin >> newGuest.age;
+
+    addGuest(guests, newGuest, ld);
+
+    cin.ignore();
+    promptNewGuest(newGuest);
+  }
+}
+
+void printGuests(Guest guests[], int ld) {
+  for (int i = 0; i < ld; i++) {
+      cout << guests[i].firstName << ", ";
+      cout << guests[i].lastName << ", ";
+      cout << guests[i].age << ", ";
+      cout << guests[i].gender << endl;
+      cout << "\n" << endl;
+  }
+}
+
 int main () {
   int ld = 0; // logic dimension
   Guest guests[MAX_CAP];
 
+  startProgram(guests, ld);
+  printGuests(guests, ld);
+
+  showEndProgram();
   
   return 0;
 }
