@@ -94,36 +94,15 @@ void countGuests(int ld) {
 }
 
 void listWomenSub20(Guest guests[], int ld) {
-  cout << "Listado de nombres de mujeres <= 20 años: " << endl;
+  cout << "Listado de nombres de mujeres <= 20 años: ";
   for (int i = 0; i < ld; i++) {
     if (guests[i].age <= 20 && guests[i].gender == "FEM") {
-      cout << "\n " << guests[i].firstName << endl;
+      cout << "\n " << guests[i].firstName;
+
+    } else {
+      cout << "Ninguna\n";
     }
-
   }
-}
-
-void deleteGuest(Guest guests[], GuestToDelete guest, int &ld) {
-  int i = 0;
-
-  while (
-      i < ld &&
-      guests[i].firstName != guest.firstName &&
-      guests[i].lastName != guest.lastName
-  ) i++;
-
-  bool guestExists = guests[i].firstName == guest.firstName && guests[i].lastName == guest.lastName;
-
-  if (!guestExists) {
-    cout << "El invitado buscado no existe en la lista!" << endl;
-    return;
-  }
-
-  for (int j = i; j < ld; j++) {
-    guests[j] = guests[j+1];
-  }
-
-  ld--;
 }
 
 int main () {
