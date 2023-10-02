@@ -88,6 +88,16 @@ void countGuests(int ld) {
   cout << "La cantidad de invitados es de: "<< ld << endl;
 }
 
+void listWomenSub20(Guest guests[], int ld) {
+  cout << "Listado de nombres de mujeres <= 20 años: " << endl;
+  for (int i = 0; i < ld; i++) {
+    if (guests[i].age <= 20 && guests[i].gender == "FEM") {
+      cout << "\n " << guests[i].firstName << endl;
+    }
+
+  }
+}
+
 int main () {
   int ld = 0; // logic dimension
   Guest guests[MAX_CAP];
@@ -95,6 +105,7 @@ int main () {
   startProgram(guests, ld);
   printGuests(guests, ld);
   countGuests(ld);
+  listWomenSub20(guests, ld);
 
   showEndProgram();
   
