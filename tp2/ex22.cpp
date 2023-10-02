@@ -28,6 +28,11 @@ struct Guest {
   int age;
 };
 
+struct GuestToDelete {
+  string firstName;
+  string lastName;
+};
+
 void printWelcome() {
   clearScreen();
   cout << "\t *** Lista de Invitados ***\n";
@@ -96,6 +101,29 @@ void listWomenSub20(Guest guests[], int ld) {
     }
 
   }
+}
+
+void deleteGuest(Guest guests[], GuestToDelete guest, int &ld) {
+  int i = 0;
+
+  while (
+      i < ld &&
+      guests[i].firstName != guest.firstName &&
+      guests[i].lastName != guest.lastName
+  ) i++;
+
+  bool guestExists = guests[i].firstName == guest.firstName && guests[i].lastName == guest.lastName;
+
+  if (!guestExists) {
+    cout << "El invitado buscado no existe en la lista!" << endl;
+    return;
+  }
+
+  for (int j = i; j < ld; j++) {
+    guests[j] = guests[j+1];
+  }
+
+  ld--;
 }
 
 int main () {
