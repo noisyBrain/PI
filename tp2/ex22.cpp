@@ -38,6 +38,13 @@ void printWelcome() {
   cout << "\t *** Lista de Invitados ***\n";
 }
 
+void printOptions(int &option) {
+  cout << "[0] Para salir" << endl;
+  cout << "[1] Para agregar un invitado" << endl;
+  cout << "[2] Para eliminar un invitado" << endl;
+  cin >> option;
+}
+
 bool isFull(int ld) { return ld == MAX_CAP; }
 
 void addGuest(Guest guests[], Guest newGuest, int &ld) {
@@ -62,7 +69,7 @@ void deleteGuest(Guest guests[], GuestToDelete guest, int &ld) {
   bool guestExists = guests[i].firstName == guest.firstName && guests[i].lastName == guest.lastName;
 
   if (!guestExists) {
-    cout << "El invitado buscado no existe en la lista!" << endl;
+    cout << "\n¡El invitado buscado no existe en la lista!\n" << endl;
     return;
   }
 
@@ -71,27 +78,19 @@ void deleteGuest(Guest guests[], GuestToDelete guest, int &ld) {
   }
 
   ld--;
-}
 
-void printOptions(int &option) {
-  cout << "[0] Para salir" << endl;
-  cout << "[1] Para agregar un invitado" << endl;
-  cout << "[2] Para eliminar un invitado" << endl;
-
-  cout << "\n " << endl;
-  cin >> option;
+  cout << "\n¡El invitado "<< guest.firstName << " fue eliminado con éxito!\n" << endl;
 }
 
 void promptNewGuest(Guest &newGuest) {
   clearAfterEnter();
-  cout << "Ingresá el nombre del invitado. [ZZZ] para terminar" << endl;
+  cout << "Ingresá el nombre del invitado (ZZZ para terminar): ";
   getline(cin >> ws, newGuest.firstName);
 }
 
-void startProgram(Guest guests[], int &ld) {
+void takeNewGuest(Guest guests[], int &ld) {
   Guest newGuest;
 
-  printWelcome();
   promptNewGuest(newGuest);
 
   while(newGuest.firstName != "ZZZ") {
@@ -112,36 +111,17 @@ void startProgram(Guest guests[], int &ld) {
 }
 
 GuestToDelete promtGuestToDelete() {
+  clearScreen();
+
   GuestToDelete guestToDelete;
 
   cout << "Ingresá el nombre de la persona a eliminar: ";
   getline(cin >> ws, guestToDelete.firstName);
+
   cout << "Ingresá el apellido de la persona a eliminar: ";
   getline(cin >> ws, guestToDelete.lastName);
 
   return guestToDelete;
-}
-
-void chooseOption(int option, Guest guests[], int &ld) {
-  while (option != 0) {
-    switch (option) {
-      case 0:
-        break;
-
-      case 1:
-        startProgram(guests, ld);
-
-      case 2: {
-        GuestToDelete guest = promtGuestToDelete();
-        deleteGuest(guests, guest, ld);
-      }
-
-      default:
-        cout << "Opción incorrecta, volvé a intentarlo..." << endl;
-        printOptions(option);
-        break;
-    }
-  }
 }
 
 void printGuests(Guest guests[], int ld) {
@@ -170,11 +150,42 @@ void listWomenSub20(Guest guests[], int ld) {
   }
 }
 
+
+void chooseOption(int &option, Guest guests[], int &ld) {
+  printWelcome();
+  printOptions(option);
+
+  while (option != 0) {
+    switch (option) {
+      case 0:
+        break;
+
+      case 1:
+        takeNewGuest(guests, ld);
+        break;
+
+      case 2: {
+        GuestToDelete guest = promtGuestToDelete();
+        deleteGuest(guests, guest, ld);
+        break;
+      }
+
+      default:
+        cout << "Opción incorrecta, volvé a intentarlo..." << endl;
+        printOptions(option);
+        break;
+    }
+
+    printOptions(option);
+  }
+}
+
 int main () {
   int ld = 0; // logic dimension
+  int option = 0;
   Guest guests[MAX_CAP];
 
-  startProgram(guests, ld);
+  chooseOption(option, guests, ld);
   printGuests(guests, ld);
   countGuests(ld);
   listWomenSub20(guests, ld);
