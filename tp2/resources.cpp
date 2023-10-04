@@ -21,7 +21,6 @@ void clearScreen() {
 }
 
 void clearAfterEnter() {
-  cin.ignore();
   cout << "\nApretá enter para continuar..." << endl;
   cin.get();
   clearScreen();
