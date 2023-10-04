@@ -6,29 +6,63 @@ incrementa en uno el valor de cada elemento de dicho arreglo. Añadir otros par�
 */
 
 #include<iostream>
-#include "resources.h"
 
 using namespace std;
 
-const int PD = 5;
+void plusOne(int array[], int PD) {
+  for (int i = 0; i < PD; i++) {
+    array[i]++;
+  }
+}
 
-void plusOne(int arr[], int ld) {
-  for (int i = 0; i < ld; i++) {
-    arr[i]++;
+void takeNumbersToEnter(int &PD) {
+  cout << "¿Cuántos números vas a ingresar? " << endl;
+  cin >> PD;
+}
+
+int takeNewNumber() {
+  int userInput = 0;
+
+  cout << "Ingresá un número: " << endl;
+  cin >> userInput;
+
+  return userInput;
+}
+
+void insertInArray(int array[], int PD, int ld) {
+  int newNumber = takeNewNumber();
+
+  while (ld < PD) {
+    array[ld] = newNumber;
+    ld++;
+
+    if (ld < PD) {
+      newNumber = takeNewNumber();
+    }
+  }
+}
+
+void printResult(int array[], int PD) {
+  for (int k = 0; k < PD; k++) {
+    cout << "Este es el número ingresado + 1: " << array[k] << endl;
   }
 }
 
 int main () {
-  int ld = 5;
-  int arr[PD] = {1, 2, 3, 4, 5};
+  int ld = 0; // Logic Dimension
+  int pd = 0; // Physical Dimension
 
-  cout << "Los números en el array antes de aumentarlos son: " << endl;
-  printArray(arr, ld);
+  /*
+     Permitir al usuario ingresar
+     la cantidad de números que quiera
+  */
+  takeNumbersToEnter(pd);
+  int array[pd];
 
-  plusOne(arr, ld);
-
-  cout << "\nLos números en el array después de aumentarlos son: " << endl;
-  printArray(arr, ld);
+  insertInArray(array, pd, ld);
+  plusOne(array, pd);
+  printResult(array, pd);
   
   return 0;
 }
+
