@@ -50,6 +50,38 @@ void addGuest(Guest guests[], Guest newGuest, int &ld) {
     ld++;
 }
 
+void deleteGuest(Guest guests[], GuestToDelete guest, int &ld) {
+  int i = 0;
+
+  while (
+      i < ld &&
+      guests[i].firstName != guest.firstName &&
+      guests[i].lastName != guest.lastName
+  ) i++;
+
+  bool guestExists = guests[i].firstName == guest.firstName && guests[i].lastName == guest.lastName;
+
+  if (!guestExists) {
+    cout << "El invitado buscado no existe en la lista!" << endl;
+    return;
+  }
+
+  for (int j = i; j < ld; j++) {
+    guests[j] = guests[j+1];
+  }
+
+  ld--;
+}
+
+void printOptions(int &option) {
+  cout << "[0] Para salir" << endl;
+  cout << "[1] Para agregar un invitado" << endl;
+  cout << "[2] Para eliminar un invitado" << endl;
+
+  cout << "\n " << endl;
+  cin >> option;
+}
+
 void promptNewGuest(Guest &newGuest) {
   clearAfterEnter();
   cout << "Ingresá el nombre del invitado. [ZZZ] para terminar" << endl;
@@ -77,6 +109,17 @@ void startProgram(Guest guests[], int &ld) {
     cin.ignore();
     promptNewGuest(newGuest);
   }
+}
+
+GuestToDelete promtGuestToDelete() {
+  GuestToDelete guestToDelete;
+
+  cout << "Ingresá el nombre de la persona a eliminar: ";
+  getline(cin >> ws, guestToDelete.firstName);
+  cout << "Ingresá el apellido de la persona a eliminar: ";
+  getline(cin >> ws, guestToDelete.lastName);
+
+  return guestToDelete;
 }
 
 void printGuests(Guest guests[], int ld) {
