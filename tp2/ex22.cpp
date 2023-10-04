@@ -122,6 +122,28 @@ GuestToDelete promtGuestToDelete() {
   return guestToDelete;
 }
 
+void chooseOption(int option, Guest guests[], int &ld) {
+  while (option != 0) {
+    switch (option) {
+      case 0:
+        break;
+
+      case 1:
+        startProgram(guests, ld);
+
+      case 2: {
+        GuestToDelete guest = promtGuestToDelete();
+        deleteGuest(guests, guest, ld);
+      }
+
+      default:
+        cout << "Opción incorrecta, volvé a intentarlo..." << endl;
+        printOptions(option);
+        break;
+    }
+  }
+}
+
 void printGuests(Guest guests[], int ld) {
   for (int i = 0; i < ld; i++) {
       cout << guests[i].firstName << ", ";
