@@ -46,6 +46,14 @@ struct Citizen {
   char gender;
 };
 
+string normalizeDate(string date) {
+  string year = date.substr(0, 4);
+  string month = date.substr(4, 2);
+  string day = date.substr(6, 2);
+
+  return day + "/" + month + "/" + year;
+}
+
 void searchCitizen(Citizen citizens[], int ld) {
   int documentType = 0;
   string documentNumber = "";
@@ -71,7 +79,7 @@ void searchCitizen(Citizen citizens[], int ld) {
     if (citizens[i].documentNumber == documentNumber && citizens[i].documentType == documentType) {
       cout << "Nombre y apellido: " << citizens[i].name << "\n";
       cout << "Dirección: " << citizens[i].address << "\n";
-      cout << "Fecha de nacimiento: " << citizens[i].birthDate << "\n"; // TODO: normalize birthdate
+      cout << "Fecha de nacimiento: " << normalizeDate(citizens[i].birthDate) << "\n";
       cout << "Tipo de documento: " << citizens[i].documentType << "\n";
       cout << "Numero de documento: " << citizens[i].documentNumber << "\n";
       cout << "Sexo: " << citizens[i].gender << "\n";
