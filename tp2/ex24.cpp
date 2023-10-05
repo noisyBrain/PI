@@ -25,10 +25,10 @@
   - El género debe mostrar la palabra completa. ✅
 
   c) Implementar un módulo que, dado el arreglo original, cargue en otro arreglo los ciudadanos de sexo
-  masculino únicamente. Imprimir este nuevo arreglo.
+  masculino únicamente. Imprimir este nuevo arreglo. ✅
 
   d) Hacer lo mismo que en el punto anterior pero obteniendo sólo las mujeres. Modularizar para no repetir
-  código.
+  código. ✅
 
 */
 
@@ -93,11 +93,34 @@ void searchCitizen(Citizen citizens[], int ld) {
   cout << "No se encontró el ciudadano" << endl;
 }
 
+void printCitizensByGender(Citizen citizens[], Citizen citizensByGender[], char gender, int ld) {
+  for (int i = 0; i < ld; i++) {
+    if (citizens[i].gender == gender) {
+      citizensByGender[i].name = citizens[i].name;
+      citizensByGender[i].gender = citizens[i].gender;
+      citizensByGender[i].address = citizens[i].address;
+      citizensByGender[i].birthDate = citizens[i].birthDate;
+      citizensByGender[i].documentType = citizens[i].documentType;
+      citizensByGender[i].documentNumber = citizens[i].documentNumber;
+
+      cout << "Nombre y apellido: " << citizensByGender[i].name << "\n";
+      cout << "Dirección: " << citizensByGender[i].address << "\n";
+      cout << "Fecha de nacimiento: " << normalizeDate(citizensByGender[i].birthDate) << "\n";
+      cout << "Tipo de documento: " << citizensByGender[i].documentType << "\n";
+      cout << "Numero de documento: " << citizensByGender[i].documentNumber << "\n";
+      cout << "Sexo: " << normalizeGender(citizensByGender[i].gender) << "\n";
+      cout << "\n";
+
+    }
+  }
+}
+
 /*
   @PRE -> assumes that the array is already filled with citizens
 */
 int main () {
   Citizen citizens[100];
+  Citizen citizensByGender[100];
   int ld = 10;
 
   citizens[0] = {"John Smith", "19900115", "123 Main St", 1, "123456789", 'M'};
@@ -112,6 +135,7 @@ int main () {
   citizens[9] = {"Olivia Martinez", "20000607", "777 Sequoia St", 1, "987123456", 'F'};
   
   searchCitizen(citizens, ld);
+  printCitizensByGender(citizens, citizensByGender, 'F', ld);
 
   return 0;
 }
