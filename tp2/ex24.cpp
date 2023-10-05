@@ -36,6 +36,16 @@
 
 using namespace std;
 
+struct Citizen {
+  string firstName;
+  string lastName;
+  string birthDate;
+  string address;
+  int documentType;
+  string documentNumber;
+  char gender;
+};
+
 int main () {
   
   return 0;
