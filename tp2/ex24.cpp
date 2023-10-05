@@ -77,6 +77,8 @@ void searchCitizen(Citizen citizens[], int ld) {
       cout << "Sexo: " << citizens[i].gender << "\n";
     }
   }
+
+  cout << "No se encontró el ciudadano" << endl;
 }
 
 /*
