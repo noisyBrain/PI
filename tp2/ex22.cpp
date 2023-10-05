@@ -140,6 +140,12 @@ void countGuests(int ld) {
 
 void listWomenSub20(Guest guests[], int ld) {
   cout << "Listado de nombres de mujeres <= 20 años: ";
+
+  if (ld == 0) {
+    cout << "Ninguna\n";
+    return;
+  }
+
   for (int i = 0; i < ld; i++) {
     if (guests[i].age <= 20 && guests[i].gender == "FEM") {
       cout << "\n " << guests[i].firstName;
