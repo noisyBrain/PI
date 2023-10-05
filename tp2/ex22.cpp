@@ -13,11 +13,6 @@
 
 */
 
-// TODO: struct para género
-// TODO: normalizar "masc" y "fem" a mayus
-// WARN: cuando no hay invitados en la lista, el output es:
-//       "La cantidad de invitados es de: " y en lugar de "Ninguno" dice "Finalizando";
-
 #include<cctype>
 #include<iostream>
 #include<string>
