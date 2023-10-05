@@ -13,8 +13,15 @@
 
 */
 
+// TODO: struct para género
+// TODO: normalizar "masc" y "fem" a mayus
+// WARN: cuando no hay invitados en la lista, el output es:
+//       "La cantidad de invitados es de: " y en lugar de "Ninguno" dice "Finalizando";
+
+#include<cctype>
 #include<iostream>
 #include<string>
+#include<unistd.h>
 #include "resources.h"
 
 using namespace std;
@@ -24,7 +31,7 @@ const int MAX_CAP = 150; // physic dimension
 struct Guest {
   string firstName;
   string lastName;
-  string gender;
+  char gender;
   int age;
 };
 
@@ -88,6 +95,14 @@ void promptNewGuest(Guest &newGuest) {
   getline(cin >> ws, newGuest.firstName);
 }
 
+bool assignGender(char &gender) {
+  cin >> gender;
+
+  if (toupper(gender) != 'M' && toupper(gender) != 'F') return false;
+
+  return true;
+}
+
 void takeNewGuest(Guest guests[], int &ld) {
   Guest newGuest;
 
@@ -97,8 +112,17 @@ void takeNewGuest(Guest guests[], int &ld) {
     cout << "Ingrese el apellido del invitado: ";
     getline(cin >> ws, newGuest.lastName);
 
-    cout << "Ingrese el género del invitado: ";
-    cin >> newGuest.gender;
+    cout << "Ingrese el género del invitado (m/f): ";
+    char gender;
+    bool isValidGender = assignGender(gender);
+
+    if (isValidGender) newGuest.gender = gender;
+    else {
+      cout << "Opción no válida, vuelva a intentarlo" << endl;
+      sleep(2);
+      clearScreen();
+      return;
+    };
 
     cout << "Ingrese la edad del invitado: ";
     cin >> newGuest.age;
@@ -147,8 +171,8 @@ void listWomenSub20(Guest guests[], int ld) {
   }
 
   for (int i = 0; i < ld; i++) {
-    if (guests[i].age <= 20 && guests[i].gender == "FEM") {
-      cout << "\n " << guests[i].firstName;
+    if (guests[i].age <= 20 && toupper(guests[i].gender) == 'F') {
+      cout << "\n" << guests[i].firstName << "\n";
 
     } else {
       cout << "Ninguna\n";
