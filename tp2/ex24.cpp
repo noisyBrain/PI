@@ -20,9 +20,9 @@
     Tipo de documento: DNI
     Número de documento: 27439221
     Sexo: masculino
-  - La fecha debe mostrarse en formato dd/mm/aa.
-  - El tipo de documento debe mostrarse con su nombre. 
-  - El género debe mostrar la palabra completa.
+  - La fecha debe mostrarse en formato dd/mm/aa. ✅
+  - El tipo de documento debe mostrarse con su nombre. ✅
+  - El género debe mostrar la palabra completa. ✅
 
   c) Implementar un módulo que, dado el arreglo original, cargue en otro arreglo los ciudadanos de sexo
   masculino únicamente. Imprimir este nuevo arreglo.
@@ -54,6 +54,10 @@ string normalizeDate(string date) {
   return day + "/" + month + "/" + year;
 }
 
+string normalizeGender(char gender) {
+  return gender == 'M' ? "Masculino" : "Femenino";
+}
+
 void searchCitizen(Citizen citizens[], int ld) {
   int documentType = 0;
   string documentNumber = "";
@@ -82,7 +86,7 @@ void searchCitizen(Citizen citizens[], int ld) {
       cout << "Fecha de nacimiento: " << normalizeDate(citizens[i].birthDate) << "\n";
       cout << "Tipo de documento: " << citizens[i].documentType << "\n";
       cout << "Numero de documento: " << citizens[i].documentNumber << "\n";
-      cout << "Sexo: " << citizens[i].gender << "\n";
+      cout << "Sexo: " << normalizeGender(citizens[i].gender) << "\n";
     }
   }
 
