@@ -68,7 +68,7 @@ void searchCitizen(Citizen citizens[], int ld) {
   cin >> documentNumber;
 
   for (int i = 0; i < ld; i++) {
-    if (citizens[i].documentNumber == documentNumber) {
+    if (citizens[i].documentNumber == documentNumber && citizens[i].documentType == documentType) {
       cout << "Nombre y apellido: " << citizens[i].name << "\n";
       cout << "Dirección: " << citizens[i].address << "\n";
       cout << "Fecha de nacimiento: " << citizens[i].birthDate << "\n"; // TODO: normalize birthdate
