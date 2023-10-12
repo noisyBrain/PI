@@ -31,7 +31,7 @@ Node* addToStart(Node* head, Node* newNode) {
   return newNode;
 }
 
-Node* createNode(Node* init) {
+Node* insertAtTheEnd(Node* init) {
   int number;
   Node* newNode;
 
@@ -68,7 +68,7 @@ Node* createNode(Node* init) {
 int main () {
   Node *head = nullptr;
 
-  head = createNode(head);
+  head = insertAtTheEnd(head);
 
   for (Node* aux = head; aux != nullptr; aux = aux->next) {
     cout << aux->data << endl;
