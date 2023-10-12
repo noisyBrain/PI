@@ -56,8 +56,19 @@ Node* createList() {
   return head;
 }
 
+void printLinkedList(Node *head) {
+    cout << "Lista enlazada: ";
+
+    for (Node* aux = head; aux != nullptr; aux = aux->next) {
+      cout << aux->data << " ";
+    }
+    cout << endl;
+}
+
 int main() {
   Node *head = createList();
+
+  printLinkedList(head);
 
   return 0;
 }
