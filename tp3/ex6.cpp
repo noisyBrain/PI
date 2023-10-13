@@ -15,6 +15,27 @@ struct Node {
   Node *next;
 };
 
+Node* insertAtTheEnd(Node *head, string studentName) {
+  Node *newNode = new Node();
+  newNode->data = studentName;
+  newNode->next = nullptr;
+
+  if (head == nullptr) {
+    head = newNode;
+
+  } else {
+    Node *aux = head;
+
+    while (aux->next != nullptr) {
+      aux = aux->next;
+    }
+
+    aux->next = newNode;
+  }
+
+  return head;
+}
+
 Node* createNode() {
   Node *head = new Node();
   string studentName = "";
@@ -22,13 +43,18 @@ Node* createNode() {
   cout << "Ingresá el nombre del alumno ('x' para finalizar): ";
   cin >> studentName;
 
-  while (studentName != "x" || studentName != "X") {}
+  while (studentName != "x" && studentName != "X") {
+    head = insertAtTheEnd(head, studentName);
+
+    cout << "Ingresá otro nombre de alumno ('x' para finalizar): ";
+    cin >> studentName;
+  }
 
   return head;
 }
 
 int main () {
-  Node *head;
+  Node *head = createNode();
 
   return 0;
 }
