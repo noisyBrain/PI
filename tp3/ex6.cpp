@@ -53,8 +53,20 @@ Node* createNode() {
   return head;
 }
 
+void printList(Node *head) {
+  cout << "Lista final: ";
+
+  for (Node *aux = head; aux != nullptr; aux = aux->next) {
+    cout << aux->data << ", ";
+  }
+
+  cout << endl;
+}
+
 int main () {
   Node *head = createNode();
+
+  printList(head);
 
   return 0;
 }
