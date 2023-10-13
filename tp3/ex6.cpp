@@ -10,7 +10,25 @@
 
 using namespace std;
 
+struct Node {
+  string data;
+  Node *next;
+};
+
+Node* createNode() {
+  Node *head = new Node();
+  string studentName = "";
+
+  cout << "Ingresá el nombre del alumno ('x' para finalizar): ";
+  cin >> studentName;
+
+  while (studentName != "x" || studentName != "X") {}
+
+  return head;
+}
+
 int main () {
+  Node *head;
 
   return 0;
 }
