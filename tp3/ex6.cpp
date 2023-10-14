@@ -50,7 +50,7 @@ Node* createNode() {
     head = insertAtTheEnd(head, studentName);
 
     cout << "Ingresá otro nombre de alumno ('x' para finalizar): ";
-    cin >> studentName;
+    getline(cin >> ws, studentName);
   }
 
   return head;
