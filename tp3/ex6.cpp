@@ -67,22 +67,36 @@ void searchInList(Node *head, string studentName) {
   cout << "No se encontró al alumno" << endl;
 }
 
-void deleteFromList(Node *head, string studentName) {
-  Node *aux_extra;
-
-  for (Node *aux = head; aux != nullptr; aux = aux->next) {
-    if (aux->next->data == studentName) {
-      aux_extra = aux->next->next;
-      delete aux->next;
-
-      aux->next = aux_extra;
-
-      cout << "Eliminado correctamente\n";
-      return;
-    }
+void deleteFromList(Node*& head, string studentName) {
+  if (head == nullptr) {
+    cout << "La lista está vacía. No se puede eliminar el estudiante.\n";
+    return;
   }
 
-  cout << "No se encontró el estudiante...\n";
+  Node* current = head;
+  Node* prev = nullptr;
+
+  while (current != nullptr) {
+    if (current->data == studentName) {
+
+      if (prev == nullptr) {
+        head = current->next;
+
+      } else {
+        prev->next = current->next;
+      }
+
+      delete current;
+      cout << "Estudiante eliminado correctamente\n";
+
+      return;
+    }
+
+    prev = current;
+    current = current->next;
+  }
+
+  cout << "No se encontró el estudiante en la lista.\n";
 }
 
 void printList(Node *head) {
