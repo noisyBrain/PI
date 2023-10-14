@@ -67,8 +67,26 @@ void searchInList(Node *head, string studentName) {
   cout << "No se encontró al alumno" << endl;
 }
 
+void deleteFromList(Node *head, string studentName) {
+  Node *aux_extra;
+
+  for (Node *aux = head; aux != nullptr; aux = aux->next) {
+    if (aux->next->data == studentName) {
+      aux_extra = aux->next->next;
+      delete aux->next;
+
+      aux->next = aux_extra;
+
+      cout << "Eliminado correctamente\n";
+      return;
+    }
+  }
+
+  cout << "No se encontró el estudiante...\n";
+}
+
 void printList(Node *head) {
-  cout << "Lista final: ";
+  cout << "\nLista final: ";
 
   for (Node *aux = head; aux != nullptr; aux = aux->next) {
     cout << aux->data << ", ";
@@ -82,7 +100,12 @@ int main () {
   string studentToSearch = "Tomas Arregui Bellino";
 
   printList(head);
+
   searchInList(head, studentToSearch);
+
+  deleteFromList(head, studentToSearch);
+
+  printList(head);
 
   return 0;
 }
