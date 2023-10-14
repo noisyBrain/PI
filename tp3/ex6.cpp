@@ -44,7 +44,7 @@ Node* createNode() {
   string studentName = "";
 
   cout << "Ingresá el nombre del alumno ('x' para finalizar): ";
-  cin >> studentName;
+  getline(cin >> ws, studentName);
 
   while (studentName != "x" && studentName != "X") {
     head = insertAtTheEnd(head, studentName);
@@ -54,6 +54,17 @@ Node* createNode() {
   }
 
   return head;
+}
+
+void searchInList(Node *head, string studentName) {
+  for (Node *aux = head; aux != nullptr; aux = aux->next) {
+    if (aux->data == studentName) {
+      cout << studentName << " se encuentra en la lista!" << endl;
+      return;
+    }
+  }
+
+  cout << "No se encontró al alumno" << endl;
 }
 
 void printList(Node *head) {
@@ -68,8 +79,10 @@ void printList(Node *head) {
 
 int main () {
   Node *head = createNode();
+  string studentToSearch = "Tomas Arregui Bellino";
 
   printList(head);
+  searchInList(head, studentToSearch);
 
   return 0;
 }
