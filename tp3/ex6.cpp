@@ -40,7 +40,7 @@ Node* insertAtTheEnd(Node *head, string studentName) {
 }
 
 Node* createNode() {
-  Node *head = new Node();
+  Node *head;
   string studentName = "";
 
   cout << "Ingresá el nombre del alumno ('x' para finalizar): ";
