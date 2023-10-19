@@ -42,6 +42,21 @@ Node* insertNumberAtTheEnd(Node *head, int number) {
   return head;
 }
 
+void existsInList(Node *head, int number) {
+  Node *aux = head;
+
+  while (aux != nullptr && aux->data != number) {
+    aux = aux->next;
+  }
+
+  if (aux == nullptr || aux->data != number) {
+    cout << "No se encontró el elemento\n";
+
+  } else {
+    cout << "El elemento se encuentra en la lista!\n";
+  }
+}
+
 Node* takeInput(Node *head) {
   char option = ' ';
   int number = -1;
@@ -49,6 +64,7 @@ Node* takeInput(Node *head) {
   cout << "Ingresá algunas de las opciones: ";
   cin >> option;
 
+  // TODO: improve data charge
   while (option != 'd' && option != 'D' && number != 0) {
     switch (option) {
       case 'a':
@@ -59,6 +75,10 @@ Node* takeInput(Node *head) {
         break;
 
       case 'b':
+        cout << "Ingresá un número: ";
+        cin >> number;
+
+        existsInList(head, number);
         break;
 
       case 'c':
