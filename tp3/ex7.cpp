@@ -42,8 +42,44 @@ Node* insertNumberAtTheEnd(Node *head, int number) {
   return head;
 }
 
+Node* takeInput(Node *head) {
+  char option = ' ';
+  int number = -1;
+
+  cout << "Ingresá algunas de las opciones: ";
+  cin >> option;
+
+  while (option != 'd' && option != 'D' && number != 0) {
+    switch (option) {
+      case 'a':
+        cout << "Ingresá un número: ";
+        cin >> number;
+
+        head = insertNumberAtTheEnd(head, number);
+        break;
+
+      case 'b':
+        break;
+
+      case 'c':
+        break;
+
+      default:
+        cout << "Opción inválida, volvé a intentarlo...\n";
+        break;
+    }
+
+    cout << "Ingresá algunas de las opciones: ";
+    cin >> option;
+  }
+
+  return head;
+}
+
 int main () {
   Node *head = nullptr;
+
+  head = takeInput(head);
 
   return 0;
 }
