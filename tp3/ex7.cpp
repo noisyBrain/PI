@@ -11,12 +11,39 @@
 
 */
 
-#include <iostream>
+#include<iostream>
 
 using namespace std;
 
+struct Node {
+  int data;
+  Node *next;
+};
+
+Node* insertNumberAtTheEnd(Node *head, int number) {
+  Node *newNode = new Node();
+
+  newNode->data = number;
+  newNode->next = nullptr;
+
+  if (head == nullptr) {
+    head = newNode;
+
+  } else {
+    Node *aux = head;
+
+    while (aux->next != nullptr) {
+      aux = aux->next;
+    }
+
+    aux->next = newNode;
+  }
+
+  return head;
+}
+
 int main () {
-  
+  Node *head = nullptr;
 
   return 0;
 }
