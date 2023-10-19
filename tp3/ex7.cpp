@@ -83,11 +83,23 @@ void printMenu() {
   cout << "[d] para salir\n";
 }
 
+void printList(Node *head) {
+  cout << "\nLista final: ";
+
+  for (Node *aux = head; aux != nullptr; aux = aux->next) {
+    cout << aux->data << ", ";
+  }
+
+  cout << endl;
+}
+
 int main () {
   Node *head = nullptr;
 
   printMenu();
   head = takeInput(head);
+
+  printList(head);
 
   return 0;
 }
