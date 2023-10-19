@@ -76,9 +76,17 @@ Node* takeInput(Node *head) {
   return head;
 }
 
+void printMenu() {
+  cout << "[a] para agregar números\n";
+  cout << "[b] para confirmar si existe un número en la lista\n";
+  cout << "[c] para confirmar la cantidad de ocurrencias de un número\n";
+  cout << "[d] para salir\n";
+}
+
 int main () {
   Node *head = nullptr;
 
+  printMenu();
   head = takeInput(head);
 
   return 0;
