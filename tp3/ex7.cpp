@@ -57,6 +57,25 @@ void existsInList(Node *head, int number) {
   }
 }
 
+void countOcurrences(Node *head, int numberToSearch) {
+  if (head == nullptr) {
+    cout << "La lista está vacía";
+  }
+
+  Node *aux = head;
+  int counter = 0;
+
+  while (aux != nullptr) {
+    if (aux->data == numberToSearch) {
+      counter++;
+    }
+
+    aux = aux->next;
+  }
+
+  cout << "La cantidad de ocurrencias del número " << numberToSearch << " es de: " << counter << endl;
+}
+
 Node* takeInput(Node *head) {
   char option = ' ';
   int number = -1;
@@ -66,22 +85,20 @@ Node* takeInput(Node *head) {
 
   // TODO: improve data charge
   while (option != 'd' && option != 'D' && number != 0) {
+    cout << "Ingresá un número: ";
+    cin >> number;
+
     switch (option) {
       case 'a':
-        cout << "Ingresá un número: ";
-        cin >> number;
-
         head = insertNumberAtTheEnd(head, number);
         break;
 
       case 'b':
-        cout << "Ingresá un número: ";
-        cin >> number;
-
         existsInList(head, number);
         break;
 
       case 'c':
+        countOcurrences(head, number);
         break;
 
       default:
