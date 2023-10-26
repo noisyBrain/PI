@@ -20,12 +20,7 @@ struct Node {
   Node *next;
 };
 
-Node* insertNumberAtTheEnd(Node *head, int number) {
-  Node *newNode = new Node();
-
-  newNode->data = number;
-  newNode->next = nullptr;
-
+Node* insertNodeAtTheEnd(Node *head, Node* newNode) {
   if (head == nullptr) {
     head = newNode;
 
@@ -89,9 +84,14 @@ Node* takeInput(Node *head) {
     cin >> number;
 
     switch (option) {
-      case 'a':
-        head = insertNumberAtTheEnd(head, number);
+      case 'a': {
+        Node *newNode = new Node();
+        newNode->data = number;
+        newNode->next = nullptr;
+
+        head = insertNodeAtTheEnd(head, newNode);
         break;
+      }
 
       case 'b':
         existsInList(head, number);
