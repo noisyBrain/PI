@@ -19,11 +19,39 @@ struct Node {
   Node *next;
 };
 
+Node* deleteOcurrences(Node* head, int numberToDelete){
+  Node* toDelete;
+  Node* aux = head;
+
+  while (aux != nullptr) {
+    if (head->data == numberToDelete) {
+      toDelete = head;
+      head = head->next;
+      aux = head;
+      delete toDelete;
+
+    } else {
+      if (aux->next != nullptr && aux->next->data == numberToDelete) {
+        toDelete = aux->next;
+        aux->next = toDelete->next;
+        delete toDelete;
+
+      } else
+        aux = aux->next;
+      }
+  }
+
+  return head;
+}
+
 int main () {
   int number = 0;
+  Node *head = nullptr;
 
   cout << "Ingresá un número para eliminar todas las ocurrencias de la lista: ";
   cin >> number;
+
+  head = deleteOcurrences(head, number);
 
   return 0;
 }
