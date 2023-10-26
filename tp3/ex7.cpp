@@ -79,7 +79,7 @@ Node* takeInput(Node *head) {
   cin >> option;
 
   // TODO: improve data charge
-  while (option != 'd' && option != 'D' && number != 0) {
+  while (option != 'e' && option != 'E' && number != 0) {
     cout << "Ingresá un número: ";
     cin >> number;
 
