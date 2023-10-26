@@ -46,7 +46,16 @@ Node* deleteOcurrences(Node* head, int numberToDelete){
 
 int main () {
   int number = 0;
-  Node *head = nullptr;
+
+  Node *firstNode = new Node();
+  Node *head = firstNode;
+  firstNode->data = 3;
+  firstNode->next = new Node();
+  firstNode->next->data = 4;
+  firstNode->next->next = new Node();
+  firstNode->next->next->data = 5;
+  firstNode->next->next->next = new Node();
+  firstNode->next->next->next->data = 3;
 
   cout << "Ingresá un número para eliminar todas las ocurrencias de la lista: ";
   cin >> number;
