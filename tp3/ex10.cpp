@@ -19,7 +19,6 @@ struct Node {
 Node* insertInList(Node *head, Node *newNode) {
   if (head == nullptr) {
     head = newNode;
-    return head;
 
   } else {
     Node *aux = head;
