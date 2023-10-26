@@ -12,6 +12,11 @@ Desarrollar un programa que realice las siguientes operaciones en listas enlazad
 
 using namespace std;
 
+struct Node {
+  int data;
+  Node *next;
+};
+
 int main () {
   
 
