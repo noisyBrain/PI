@@ -62,10 +62,19 @@ Node* takeUserPrompt(Node *head) {
   return head;
 }
 
+void printList(Node *head) {
+  for (Node *aux = head; aux != nullptr; aux = aux->next) {
+    cout << "aux->data: " << aux->data << "\n";
+  }
+
+  cout << endl;
+}
+
 int main () {
   Node *head = nullptr;
 
   head = takeUserPrompt(head);
+  printList(head);
 
   return 0;
 }
