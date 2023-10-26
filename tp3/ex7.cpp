@@ -101,6 +101,25 @@ Node* takeInput(Node *head) {
         countOcurrences(head, number);
         break;
 
+      case 'd': {
+        char confirmation = ' ';
+        cout << "Estás seguro que querés dividir la lista?\nLos cambios son irreversibles (s/n)" << endl;
+        cin >> confirmation;
+
+        if (confirmation == 'n' || confirmation == 'N') {
+          break;
+        }
+
+        Node *evenList = nullptr;
+        Node *oddList = nullptr;
+
+        head = devideList(head, evenList, oddList);
+
+        printList(oddList);
+        printList(evenList);
+        break;
+      }
+
       default:
         cout << "Opción inválida, volvé a intentarlo...\n";
         break;
@@ -117,17 +136,8 @@ void printMenu() {
   cout << "[a] para agregar números\n";
   cout << "[b] para confirmar si existe un número en la lista\n";
   cout << "[c] para confirmar la cantidad de ocurrencias de un número\n";
-  cout << "[d] para salir\n";
-}
-
-void printList(Node *head) {
-  cout << "\nLista final: ";
-
-  for (Node *aux = head; aux != nullptr; aux = aux->next) {
-    cout << aux->data << ", ";
-  }
-
-  cout << endl;
+  cout << "[d] para dividir la lista en dos, según pares e impares\n";
+  cout << "[e] para salir\n";
 }
 
 int main () {
