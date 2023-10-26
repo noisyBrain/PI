@@ -4,7 +4,6 @@
   debe insertarse). Los números leídos deberán ser almacenados en una lista enlazada simple. Hacer tres
   versiones, insertando en cada una con diferente criterio, a saber:
   a) Al inicio de la lista.
-    se encontraba en la lista, deberá quedar antes que todas sus repeticiones.
 
   Finalmente, imprimir la lista.
 
