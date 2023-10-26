@@ -6,9 +6,15 @@ las palabras que se encuentran repetidas. Finalmente, imprimir ambas listas.
 
 */
 
-#include <iostream>
+#include<iostream>
+#include<string>
 
 using namespace std;
+
+struct Node {
+  string data;
+  Node *next;
+};
 
 int main () {
   
