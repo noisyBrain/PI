@@ -16,8 +16,56 @@ struct Node {
   Node *next;
 };
 
+Node* insertInList(Node *head, Node *newNode) {
+  if (head == nullptr) {
+    head = newNode;
+    return head;
+
+  } else {
+    Node *aux = head;
+
+    while (aux->next != nullptr) {
+      aux = aux->next;
+    }
+
+    aux->next = newNode;
+  }
+
+  return head;
+}
+
+void normalizeWord(string &word) {
+  for (int i = 0; i < word.length(); i++) {
+    word[i] = tolower(word[i]);
+  }
+}
+
+Node* takeUserPrompt(Node *head) {
+  string word = " ";
+
+  cout << "Ingresá una palabra: ";
+  cin >> word;
+
+  normalizeWord(word);
+
+  while (word != "x" && word != "X") {
+    Node *newNode = new Node();
+    newNode->data = word;
+    newNode->next = nullptr;
+
+    head = insertInList(head, newNode);
+
+    cout << "Ingresá otra palabra: ";
+    cin >> word;
+  }
+
+  return head;
+}
+
 int main () {
-  
+  Node *head = nullptr;
+
+  head = takeUserPrompt(head);
 
   return 0;
 }
