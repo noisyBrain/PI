@@ -36,9 +36,10 @@ Node* deleteOcurrences(Node* head, int numberToDelete){
         aux->next = toDelete->next;
         delete toDelete;
 
-      } else
+      } else {
         aux = aux->next;
       }
+    }
   }
 
   return head;
