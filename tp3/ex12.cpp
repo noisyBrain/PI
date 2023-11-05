@@ -26,6 +26,41 @@ struct Node {
   Node *next;
 };
 
+Node* getNodeData() {
+  Node *newNode = new Node();
+  newNode->next = nullptr;
+
+  cout << "Ingresá el código del producto: ";
+  cin >> newNode->data.code;
+
+  cout << "Ingresá el precio del producto: ";
+  cin >> newNode->data.price;
+
+  cout << "Ingresá el stock del producto: ";
+  cin >> newNode->data.stock;
+
+  cout << "Ingresá la descripción del producto: ";
+  getline(cin >> ws, newNode->data.description);
+
+  return newNode;
+}
+
+void addToList(Node *&head) {
+  Node *newNode = getNodeData();
+
+  if (head == nullptr) {
+    head = newNode;
+    return;
+  }
+
+  Node *aux = head;
+  while (aux->next != nullptr) {
+    aux = aux->next;
+  }
+
+  aux->next = newNode;
+}
+
 void printMenu() {
   cout << "\t\tSeleccioná una opción (-1 para salir): \n\n";
   cout << "1. Para incrementar el precio de un artículo: \n";
@@ -58,8 +93,15 @@ void performMenuAction(Node *&head) {
       case -1:
         showEndProgram();
         break;
+
+      case 1: {
+        addToList(head);
+        break;
+      }
+
       case 2:
         break;
+
       case 3:
         break;
 
@@ -83,7 +125,10 @@ void printList(Node *head) {
 }
 
 int main () {
-  performMenuAction();
+  Node *head = nullptr;
+
+  performMenuAction(head);
+  printList(head);
 
   return 0;
 }
