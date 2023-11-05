@@ -33,17 +33,17 @@ void printMenu() {
   cout << "3. Para eliminar de la lista los artículos que no tengan stock: \n";
 }
 
-void takeUserPrompt(int &option) {
+void getUserOption(int &option) {
   printMenu();
 
   cin >> option;
 }
 
-void takeOption() {
+void performMenuAction() {
   int option = 0;
 
   printMenu();
-  takeUserPrompt(option);
+  getUserOption(option);
 
   do {
     switch (option) {
