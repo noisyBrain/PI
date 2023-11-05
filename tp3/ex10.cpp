@@ -33,6 +33,37 @@ Node* insertInList(Node *head, Node *newNode) {
   return head;
 }
 
+bool isRepeated(Node *head, string word) {
+  Node *aux = head;
+
+  while (aux != nullptr) {
+    if (aux->data == word) {
+
+      return true;
+    }
+    aux = aux->next;
+  }
+
+  return false;
+}
+
+Node* checkRepeated(Node *head) {
+  Node *headNewList = nullptr;
+
+  for (Node *aux = head; aux != nullptr; aux = aux->next) {
+    if (isRepeated(aux->next, aux->data)) {
+      Node *newNode = new Node();
+      newNode->next = nullptr;
+      newNode->data = aux->data;
+
+      headNewList = insertInList(headNewList, newNode);
+    }
+  }
+
+  return headNewList;
+}
+
+
 void normalizeWord(string &word) {
   for (int i = 0; i < word.length(); i++) {
     word[i] = tolower(word[i]);
@@ -71,9 +102,15 @@ void printList(Node *head) {
 
 int main () {
   Node *head = nullptr;
+  Node *secondListHead = nullptr;
 
   head = takeUserPrompt(head);
   printList(head);
+
+  secondListHead = checkRepeated(head);
+
+  cout << "Esta es la lista de las palabras repetidas" << endl;
+  printList(secondListHead);
 
   return 0;
 }
