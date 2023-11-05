@@ -42,10 +42,9 @@ void getUserOption(int &option) {
 void performMenuAction() {
   int option = 0;
 
-  printMenu();
-  getUserOption(option);
-
   do {
+    getUserOption(option);
+
     switch (option) {
       case 1:
         break;
@@ -62,7 +61,7 @@ void performMenuAction() {
 }
 
 int main () {
-  
+  performMenuAction();
 
   return 0;
 }
