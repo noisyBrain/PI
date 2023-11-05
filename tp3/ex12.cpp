@@ -39,14 +39,24 @@ void getUserOption(int &option) {
   cin >> option;
 }
 
-void performMenuAction() {
+void showEndProgram() {
+  cout << "Finalizando..." << endl;
+  sleep(1);
+
+  cout << "\n// -------------------------------- //" << endl;
+  cout << "\t¡Programa Finalizando!" << endl;
+  cout << "// -------------------------------- //" << endl;
+}
+
+void performMenuAction(Node *&head) {
   int option = 0;
 
   do {
     getUserOption(option);
 
     switch (option) {
-      case 1:
+      case -1:
+        showEndProgram();
         break;
       case 2:
         break;
