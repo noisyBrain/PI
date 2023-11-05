@@ -79,9 +79,12 @@ Node* devideList(Node *head, Node *&evenHead, Node *&oddHead) {
 
   Node *aux;
 
+  // WARN: I should not use head. Always use an aux pointer
   while (head != nullptr) {
     aux = head;
     head = head->next;
+
+    // NOTE: I could use aux = aux->next after else statement
     aux->next = nullptr;
 
     if (aux->data % 2 == 0) {
