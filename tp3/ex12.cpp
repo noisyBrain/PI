@@ -18,7 +18,7 @@ using namespace std;
 struct Article {
   int code;
   string description;
-  int price;
+  double price;
   int stock;
 };
 
