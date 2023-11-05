@@ -33,6 +33,34 @@ void printMenu() {
   cout << "3. Para eliminar de la lista los artículos que no tengan stock: \n";
 }
 
+void takeUserPrompt(int &option) {
+  printMenu();
+
+  cin >> option;
+}
+
+void takeOption() {
+  int option = 0;
+
+  printMenu();
+  takeUserPrompt(option);
+
+  do {
+    switch (option) {
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+
+      default:
+        cout << "Opción incorrecta, volvé a intentarlo...\n";
+        break;
+    }
+  } while (option > 0);
+}
+
 int main () {
   
 
