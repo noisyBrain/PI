@@ -26,6 +26,13 @@ struct Node {
   Node *next;
 };
 
+void printMenu() {
+  cout << "\t\tSeleccioná una opción (-1 para salir): \n\n";
+  cout << "1. Para incrementar el precio de un artículo: \n";
+  cout << "2. Para incrementar el stock de un artículo: \n";
+  cout << "3. Para eliminar de la lista los artículos que no tengan stock: \n";
+}
+
 int main () {
   
 
