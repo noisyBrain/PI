@@ -70,6 +70,18 @@ void performMenuAction(Node *&head) {
   } while (option > 0);
 }
 
+void printList(Node *head) {
+  for (Node *aux = head; aux != nullptr; aux = aux->next) {
+    cout << "code: " << aux->data.code << "\n";
+    cout << "price: " << aux->data.price << "\n";
+    cout << "stock: " << aux->data.stock << "\n";
+    cout << "description: " << aux->data.description << "\n";
+    cout << "\n";
+  }
+
+  cout << endl;
+}
+
 int main () {
   performMenuAction();
 
