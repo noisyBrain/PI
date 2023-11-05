@@ -9,9 +9,22 @@
 
 */
 
-#include <iostream>
+#include<iostream>
+#include<string>
 
 using namespace std;
+
+struct Article {
+  int code;
+  string description;
+  int price;
+  int stock;
+};
+
+struct Node {
+  Article data;
+  Node *next;
+};
 
 int main () {
   
