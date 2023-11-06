@@ -13,8 +13,33 @@
 
 #include<iostream>
 #include<string>
+#include "../../explanations/merge/resources_ex13.cpp"
 
 int main () {
+  Node *firstList = nullptr;
+  Node *secondList = nullptr;
+  
+  firstList = insertSorted(firstList, createNewNode(1, 5));
+  firstList = insertSorted(firstList, createNewNode(2, 3));
+  firstList = insertSorted(firstList, createNewNode(3, 10));
+  firstList = insertSorted(firstList, createNewNode(4, 150));
+  firstList = insertSorted(firstList, createNewNode(5, 23));
+
+  secondList = insertSorted(secondList, createNewNode(3, 121));
+  secondList = insertSorted(secondList, createNewNode(5, 180));
+  secondList = insertSorted(secondList, createNewNode(111, 83));
+  secondList = insertSorted(secondList, createNewNode(1, 10));
+
+  cout << "First List: " << endl;
+  printList(firstList);
+  cout << endl;
+  cout << "Second List:" << endl;
+  printList(secondList);
+
+  cout << endl;
+  cout << "Merged List:" << endl;
+  Node* mergedList = merge(firstList, secondList);
+  printList(mergedList);
 
   return 0;
 }
