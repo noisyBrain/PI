@@ -15,30 +15,54 @@
 #include<string>
 #include "../../explanations/merge/resources_ex13.cpp"
 
+Node* insertAtTheEnd(Node *head, Node *newNode) {
+  if (head == nullptr) {
+    return newNode;
+  }
+
+  Node *current = head;
+  while (current->next != nullptr) {
+    current = current->next;
+  }
+
+  current->next = newNode;
+  return head;
+}
+
+Node* insertSortedNode(Node *&oldList, Node *&newList) {
+  Node *previous = oldList;
+
+  oldList = oldList->next;
+  previous->next = nullptr;
+
+  newList = insertAtTheEnd(newList, previous);
+  return newList;
+}
+
 Node* merge(Node *list1, Node *list2) {
   if (list1 == nullptr) return list2;
   if (list2 == nullptr) return list1;
 
-  Node *newList = nullptr;
+  Node *mergedList = nullptr;
   while (list1 != nullptr && list2 != nullptr) {
 
     if (list1->data.code <= list2->data.code) {
-      reinsertNode(list1, newList);
+      insertSortedNode(list1, mergedList);
 
     } else {
-      reinsertNode(list2, newList);
+      insertSortedNode(list2, mergedList);
     }
   }
 
   while (list1 != nullptr) {
-    reinsertNode(list1, newList);
+    insertSortedNode(list1, mergedList);
   }
 
   while (list2 != nullptr) {
-    reinsertNode(list2, newList);
+    insertSortedNode(list2, mergedList);
   }
 
-  return newList;
+  return mergedList;
 }
 
 int main () {
