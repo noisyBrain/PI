@@ -15,6 +15,32 @@
 #include<string>
 #include "../../explanations/merge/resources_ex13.cpp"
 
+Node* merge(Node *list1, Node *list2) {
+  if (list1 == nullptr) return list2;
+  if (list2 == nullptr) return list1;
+
+  Node *newList = nullptr;
+  while (list1 != nullptr && list2 != nullptr) {
+
+    if (list1->data.code <= list2->data.code) {
+      reinsertNode(list1, newList);
+
+    } else {
+      reinsertNode(list2, newList);
+    }
+  }
+
+  while (list1 != nullptr) {
+    reinsertNode(list1, newList);
+  }
+
+  while (list2 != nullptr) {
+    reinsertNode(list2, newList);
+  }
+
+  return newList;
+}
+
 int main () {
   Node *firstList = nullptr;
   Node *secondList = nullptr;
