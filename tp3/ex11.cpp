@@ -16,18 +16,45 @@ struct Node {
   Node *next;
 };
 
+Node* insertSorted(Node* head, Node* newNode) {
+  if (head == nullptr || newNode->data < head->data) {
+    newNode->next = head;
+    return newNode;
+  }
+
+  Node* aux = head;
+
+  while (aux->next != nullptr && aux->next->data < newNode->data) {
+    aux = aux->next;
+  }
+
+  newNode->next = aux->next;
+  aux->next = newNode;
+
+  return head;
+}
+
+Node* generateNode(string dato) {
+   Node* newNode = new Node();
+
+   newNode->data = dato;
+   newNode->next = nullptr;
+
+   return newNode;
+}
+
 Node* insertAtTheEnd(Node *mergedListHead, Node *newNode) {
   if (mergedListHead == nullptr) {
     return newNode;
   }
 
   Node *aux = mergedListHead;
+
   while (aux->next != nullptr) {
     aux = aux->next;
   }
 
   aux->next = newNode;
-
   return mergedListHead;
 }
 
@@ -72,16 +99,29 @@ void printList(Node *head) {
 }
 
 int main () {
-  Node *firstList = new Node {"hola", nullptr};
-  Node *secondList = new Node {"chau", nullptr};
-  
-  firstList->next = new Node {"partido", nullptr};
-  secondList->next = new Node {"arbol", nullptr};
+   Node* firstList = nullptr;
+   firstList = insertSorted(firstList, generateNode("cereza"));
+   firstList = insertSorted(firstList, generateNode("caramelo"));
+   firstList = insertSorted(firstList, generateNode("caramelo"));
+   firstList = insertSorted(firstList, generateNode("chocolate"));
+   firstList = insertSorted(firstList, generateNode("menta"));
 
-  Node *mergedList = merge(firstList, secondList);
+   Node* secondList = nullptr;
+   secondList = insertSorted(secondList, generateNode("vainilla"));
+   secondList = insertSorted(secondList, generateNode("chocolate"));
+   secondList = insertSorted(secondList, generateNode("menta"));
+   secondList = insertSorted(secondList, generateNode("frutilla"));
 
-  cout << "merged List... \n";
-  printList(mergedList);
+   cout << "First List: " << endl;
+   printList(firstList);
+   cout << endl;
+   cout << "Second List:" << endl;
+   printList(secondList);
+
+   cout << endl;
+   cout << "Merged List:" << endl;
+   Node* C = merge(firstList, secondList);
+   printList(C);
 
   return 0;
 }
