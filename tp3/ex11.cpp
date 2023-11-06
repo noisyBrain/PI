@@ -58,16 +58,13 @@ Node* insertAtTheEnd(Node *mergedListHead, Node *newNode) {
   return mergedListHead;
 }
 
-Node* gotoNextNode(Node *&listToMerge, Node *&newList) {
-  while (listToMerge != nullptr) {
+void gotoNextNode(Node *&listToMerge, Node *&newList) {
     Node *previousNode = listToMerge;
 
-    previousNode = listToMerge;
     listToMerge = listToMerge->next;
-    newList = insertAtTheEnd(newList, previousNode);
-  }
+    previousNode->next = nullptr;
 
-  return newList;
+    newList = insertAtTheEnd(newList, previousNode);
 }
 
 Node* merge(Node *list1, Node *list2) {
@@ -75,17 +72,20 @@ Node* merge(Node *list1, Node *list2) {
 
   while (list1 != nullptr && list2 != nullptr) {
     if (list1->data <= list2->data) {
-      mergedList = insertAtTheEnd(mergedList, list1);
-      list1 = list1->next;
+      gotoNextNode(list1, mergedList);
 
     } else {
-      mergedList = insertAtTheEnd(mergedList, list2);
-      list2 = list2->next;
+      gotoNextNode(list2, mergedList);
     }
   }
 
-  // TODO: ask for this
-  mergedList = insertAtTheEnd(mergedList, list2);
+  while (list1 != nullptr) {
+    gotoNextNode(list1, mergedList);
+  }
+
+  while (list2 != nullptr) {
+    gotoNextNode(list2, mergedList);
+  }
 
   return mergedList;
 }
