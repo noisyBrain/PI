@@ -62,6 +62,29 @@ void addToList(Node *&head) {
   aux->next = newNode;
 }
 
+void removeItemsOutOfStock(Node *&head) {
+  Node *current = head;
+  Node *previous = nullptr;
+
+  while (current != nullptr) {
+    if (current->data.stock == 0) {
+      Node *temp = current;
+
+      if (previous == nullptr) {
+        head = current->next;
+      } else {
+        previous->next = current->next;
+      }
+
+      current = current->next;
+      delete temp;
+    } else {
+      previous = current;
+      current = current->next;
+    }
+  }
+}
+
 void increaseStockByCode(Node *head) {
   int articleCode;
 
@@ -143,6 +166,10 @@ void performMenuAction(Node *&head) {
 
       case 3:
         increaseStockByCode(head);
+        break;
+
+      case 4:
+        removeItemsOutOfStock(head);
         break;
 
       default:
