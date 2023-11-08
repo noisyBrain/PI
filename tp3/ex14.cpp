@@ -18,6 +18,7 @@
 */
 
 #include <iostream>
+#include "../../explanations/merge/utils.cpp"
 
 using namespace std;
 
