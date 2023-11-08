@@ -15,13 +15,29 @@
   en el rango indicado. Se pide informar la cantidad de alumnos que aprobaron las tres materias
   (se aprueba con 7) y el porcentaje que representan los aprobados sobre el total de alumnos.
 
-- generar struct de alumno y struct de nodo
-- 
 */
 
 #include <iostream>
 
 using namespace std;
+
+struct Subject {
+  int maths;
+  int literature;
+  int geography;
+};
+
+struct Student {
+  string name;
+  int DNI;
+  int studentRecord;
+  Subject subjects[3];
+};
+
+struct Node {
+  Student data;
+  Node *next;
+};
 
 int main () {
 
