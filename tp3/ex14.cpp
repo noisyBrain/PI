@@ -35,10 +35,22 @@ struct Student {
   Subject subjects;
 };
 
-struct Node {
-  Student data;
-  Node *next;
-};
+bool compareStudentByRecord(const Student &student1, const Student &student2) {
+  return student1.studentRecord < student2.studentRecord;
+}
+
+void printList(Node<Student> *head) {
+  for (Node<Student> *aux = head; aux != nullptr; aux = aux->next) {
+    cout << "aux->data.name: " << aux->data.name << "\n";
+    cout << "aux->data.DNI: " << aux->data.DNI << "\n";
+    cout << "aux->data.studentRecord: " << aux->data.studentRecord << "\n";
+    cout << "aux->data.maths: " << aux->data.subjects.maths << "\n";
+    cout << "aux->data.literatura: " << aux->data.subjects.literature << "\n";
+    cout << "\n";
+  }
+
+  cout << endl;
+}
 
 int main () {
 
