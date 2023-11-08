@@ -53,6 +53,22 @@ void printList(Node<Student> *head) {
 }
 
 int main () {
+  Node<Student> *studentsList = nullptr;
+  
+for (int i = 0; i < 10; i++) {
+    Student student;
+    student.name = "Estudiante " + to_string(i);
+    student.DNI = 1000000 + i;
+    student.studentRecord = 40000 + i;
+    student.subjects.maths = i + 1;
+    student.subjects.literature = i + 2;
+    student.subjects.geography = i + 3;
+
+    studentsList = insertSorted(studentsList, createNewNode<Student>(student), compareStudentByRecord);
+}
+  cout << "First List: " << endl;
+  printList(studentsList);
+  cout << endl;
 
   return 0;
 }
