@@ -32,7 +32,7 @@ struct Student {
   string name;
   int DNI;
   int studentRecord;
-  Subject subjects[3];
+  Subject subjects;
 };
 
 struct Node {
