@@ -95,15 +95,19 @@ Node<Student>* addStudentToList(Node<Student> *head) {
 }
 
 void countApprovedStudents(Node<Student> *head) {
+  float totalStudents = 0;
   int studentsApprobedCounter = 0;
 
   for (Node<Student> *current = head; current != nullptr; current = current->next) {
-    int average = (current->data.subjects.geography + current->data.subjects.literature + current->data.subjects.maths) / 3;
+    totalStudents++;
 
+    int average = (current->data.subjects.geography + current->data.subjects.literature + current->data.subjects.maths) / 3;
     if (average >= 7) studentsApprobedCounter++;
   }
 
+  float approvedAverage = (studentsApprobedCounter / totalStudents ) * 100;
   cout << "La cantidad de alumnos que aprobaron las tres materias es de: " << studentsApprobedCounter << endl;
+  cout << "El porcentaje de alumnos que aprobaron es de: %" << approvedAverage << endl;
 }
 
 int main () {
