@@ -23,9 +23,9 @@
 using namespace std;
 
 struct Subject {
-  int maths;
-  int literature;
-  int geography;
+  int maths = -1;
+  int literature = -1;
+  int geography = -1;
 };
 
 struct Student {
@@ -53,6 +53,48 @@ void printList(Node<Student> *head) {
   cout << endl;
 }
 
+
+void addStudentMark(string subjectName, int &mark) {
+  do {
+    cout << subjectName;
+    cin >> mark;
+    
+  } while(mark < 1 || mark > 10);
+}
+
+Student addFields(Student newStudent) {
+  cout << "Ingresá nombre y apellido: ";
+  cin >> newStudent.name;
+
+  cout << "Ingresá DNI: ";
+  cin >> newStudent.DNI;
+
+  cout << "Ingresá el legajo del estudiante: ";
+  cin >> newStudent.studentRecord;
+
+  cout << "Ingresá las notas (entre 1 y 10) para ";
+  addStudentMark("Matemática: ", newStudent.subjects.maths);
+  addStudentMark("Literatura: ", newStudent.subjects.literature);
+  addStudentMark("Geografía: ", newStudent.subjects.geography);
+
+  return newStudent;
+}
+
+Node<Student>* addStudentToList(Node<Student> *head) {
+  int shouldFinish = 1;
+
+  while (shouldFinish != 0) {
+    Student newStudent;
+    newStudent = addFields(newStudent);
+    head = insertSorted(head, createNewNode<Student>(newStudent), compareStudentByRecord);
+
+    cout << "Ingrese 1 para continuar la carga o 0 para finalizar: ";
+    cin >> shouldFinish;
+  }
+
+  return head;
+}
+
 int main () {
   Node<Student> *studentsList = nullptr;
   
@@ -70,6 +112,9 @@ for (int i = 0; i < 10; i++) {
   cout << "First List: " << endl;
   printList(studentsList);
   cout << endl;
+
+  studentsList = addStudentToList(studentsList);
+  printList(studentsList);
 
   return 0;
 }
