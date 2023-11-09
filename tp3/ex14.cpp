@@ -46,6 +46,7 @@ void printList(Node<Student> *head) {
     cout << "aux->data.studentRecord: " << aux->data.studentRecord << "\n";
     cout << "aux->data.maths: " << aux->data.subjects.maths << "\n";
     cout << "aux->data.literatura: " << aux->data.subjects.literature << "\n";
+    cout << "aux->data.geography: " << aux->data.subjects.geography << "\n";
     cout << "\n";
   }
 
