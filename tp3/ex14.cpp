@@ -63,7 +63,7 @@ void addStudentMark(string subjectName, int &mark) {
 
 Student addFields(Student newStudent) {
   cout << "Ingresá nombre y apellido: ";
-  cin >> newStudent.name;
+  getline(cin >> ws, newStudent.name);
 
   cout << "Ingresá DNI: ";
   cin >> newStudent.DNI;
