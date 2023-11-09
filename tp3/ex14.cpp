@@ -53,7 +53,6 @@ void printList(Node<Student> *head) {
   cout << endl;
 }
 
-
 void addStudentMark(string subjectName, int &mark) {
   do {
     cout << subjectName;
@@ -95,6 +94,18 @@ Node<Student>* addStudentToList(Node<Student> *head) {
   return head;
 }
 
+void countApprovedStudents(Node<Student> *head) {
+  int studentsApprobedCounter = 0;
+
+  for (Node<Student> *current = head; current != nullptr; current = current->next) {
+    int average = (current->data.subjects.geography + current->data.subjects.literature + current->data.subjects.maths) / 3;
+
+    if (average >= 7) studentsApprobedCounter++;
+  }
+
+  cout << "La cantidad de alumnos que aprobaron las tres materias es de: " << studentsApprobedCounter << endl;
+}
+
 int main () {
   Node<Student> *studentsList = nullptr;
   
@@ -115,6 +126,8 @@ for (int i = 0; i < 10; i++) {
 
   studentsList = addStudentToList(studentsList);
   printList(studentsList);
+
+  countApprovedStudents(studentsList);
 
   return 0;
 }
