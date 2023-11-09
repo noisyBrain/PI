@@ -15,12 +15,23 @@
 
 */
 
-#include <iostream>
+#include<iostream>
+#include<string>
 
 using namespace std;
 
+struct BridgeSensorData {
+  string sensorLocation;
+  string licencePlate;
+  float speed;
+};
+
+struct Node {
+  BridgeSensorData data;
+  Node *next;
+};
+
 int main () {
-  
 
   return 0;
 }
