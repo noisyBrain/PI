@@ -31,6 +31,18 @@ struct Node {
   Node *next;
 };
 
+void printList(Node* head) {
+  cout << "\n";
+
+  for (Node *current = head; current != nullptr; current = current->next) {
+    cout << "current->data.licencePlate: " << current->data.licencePlate << "\n";
+    cout << "current->data.sensorLocation: " << current->data.sensorLocation << "\n";
+    cout << "current->data.speed: " << current->data.speed << "\n";
+  }
+
+  cout << endl;
+}
+
 Node* insertSorted(Node*& head, Node* newNode) {
   if (head == nullptr || head->data.licencePlate >= newNode->data.licencePlate) {
     newNode->next = head;
@@ -95,6 +107,7 @@ int main () {
   Node *head = nullptr;
 
   head = takeUserPrompt(head);
+  printList(head);
 
   return 0;
 }
