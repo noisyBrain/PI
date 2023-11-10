@@ -53,10 +53,22 @@ Node* takeUserPrompt(Node* end) {
   return end;
 }
 
+void printList(Node* end) {
+  cout << "\n";
+  if (end == nullptr) cout << "La lista está vacía!\n"; return;
+
+  for (Node *current = end->next; current != end; current = current->next) {
+    cout << "current->data: " << current->data << "\n";
+  }
+
+  cout << endl;
+}
+
 int main () {
   Node* end = nullptr;
 
   end = takeUserPrompt(end);
+  printList(end);
 
   return 0;
 }
