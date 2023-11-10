@@ -103,11 +103,44 @@ Node* takeUserPrompt(Node* head) {
   return head;
 }
 
+void classifyBySensorLocation(Node *head, Node *&northList, Node *&southList, Node *&mediumList) {
+  Node *current = head;
+
+  while (current != nullptr) {
+    if (current->data.sensorLocation == "norte") {
+      northList = createNewNode(northList, current->data);
+
+    } else if (current->data.sensorLocation == "sur") {
+      southList = createNewNode(southList, current->data);
+
+    } else if (current->data.sensorLocation == "medio") {
+      mediumList = createNewNode(mediumList, current->data);
+    }
+
+    current = current->next;
+  }
+}
+
+
 int main () {
   Node *head = nullptr;
 
   head = takeUserPrompt(head);
   printList(head);
+
+  Node *northSensorList = nullptr;
+  Node *southSensorList = nullptr;
+  Node *mediumSensorList = nullptr;
+  classifyBySensorLocation(head, northSensorList, southSensorList, mediumSensorList);
+
+  cout << "\n northSensorList: \n";
+  printList(northSensorList);
+
+  cout << "\n southSensorList: \n";
+  printList(southSensorList);
+
+  cout << "\n mediumSensorList: \n";
+  printList(mediumSensorList);
 
   return 0;
 }
