@@ -9,13 +9,54 @@
 
 #include <iostream>
 
+using namespace std;
+
 struct Node {
   int data;
   Node *next;
 };
 
+Node* insertAtTheBeggining(Node* end, Node* newNode) {
+  if (end == nullptr) {
+    newNode->next = newNode;
+    return newNode;
+  }
+
+  newNode->next = end->next;
+  end->next = newNode;
+
+  return end;
+}
+
+Node* createNewNode(Node* end, int data) {
+  Node* newNode = new Node();
+  newNode->data = data;
+
+  end = insertAtTheBeggining(end, newNode);
+
+  return end;
+}
+
+Node* takeUserPrompt(Node* end) {
+  int number = 1;
+
+  cout << "Ingresá un número entero (0 para salir): ";
+  cin >> number;
+
+  while (number != 0) {
+    end = createNewNode(end, number);
+
+    cout << "Ingresá otro número entero (0 para salir): ";
+    cin >> number;
+  }
+
+  return end;
+}
+
 int main () {
   Node* end = nullptr;
+
+  end = takeUserPrompt(end);
 
   return 0;
 }
