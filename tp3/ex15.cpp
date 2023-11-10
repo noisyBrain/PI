@@ -31,7 +31,32 @@ struct Node {
   Node *next;
 };
 
+Node* takeUserPrompt(Node* head) {
+  BridgeSensorData sensorInfo;
+
+  cout << "Ingresá la patente del auto: ";
+  cin >> sensorInfo.licencePlate;
+
+  while (sensorInfo.licencePlate != "aaa99") {
+    cout << "Ingresá la localización del sensor ('norte', 'sur', 'medio'): ";
+    cin >> sensorInfo.sensorLocation;
+
+    cout << "Ingresá la velocidad del vehículo: ";
+    cin >> sensorInfo.speed;
+
+    head = createNewNode(head, sensorInfo);
+
+    cout << "Ingresá la patente de otro auto: ";
+    cin >> sensorInfo.licencePlate;
+  }
+
+  return head;
+}
+
 int main () {
+  Node *head = nullptr;
+
+  head = takeUserPrompt(head);
 
   return 0;
 }
