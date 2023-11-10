@@ -31,6 +31,17 @@ struct Node {
   Node *next;
 };
 
+Node* createNewNode(Node* head, BridgeSensorData sensorInfo) {
+  Node* sensorInformationNode = new Node();
+
+  sensorInformationNode->data.speed = sensorInfo.speed;
+  sensorInformationNode->data.licencePlate = sensorInfo.licencePlate;
+  sensorInformationNode->data.sensorLocation = sensorInfo.sensorLocation;
+
+  head = insertSorted(head, sensorInformationNode);
+  return head;
+}
+
 Node* takeUserPrompt(Node* head) {
   BridgeSensorData sensorInfo;
 
