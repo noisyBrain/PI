@@ -31,6 +31,33 @@ struct Node {
   Node *next;
 };
 
+Node* insertSorted(Node*& head, Node* newNode) {
+  if (head == nullptr || head->data.licencePlate >= newNode->data.licencePlate) {
+    newNode->next = head;
+    head = newNode;
+    return head;
+  }
+
+  Node *current = head;
+  while (current->next != nullptr) {
+    bool isNewPlateGreater = current->next->data.licencePlate < newNode->data.licencePlate;
+    bool samePlateDifferentLocation = !isNewPlateGreater &&
+                                      current->next->data.licencePlate == newNode->data.licencePlate &&
+                                      current->next->data.sensorLocation < newNode->data.sensorLocation;
+
+    if (isNewPlateGreater || samePlateDifferentLocation) {
+      break;
+    }
+
+    current = current->next;
+  }
+
+  newNode->next = current->next;
+  current->next = newNode;
+
+  return head;
+}
+
 Node* createNewNode(Node* head, BridgeSensorData sensorInfo) {
   Node* sensorInformationNode = new Node();
 
