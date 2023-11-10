@@ -9,7 +9,13 @@
 
 #include <iostream>
 
+struct Node {
+  int data;
+  Node *next;
+};
+
 int main () {
+  Node* end = nullptr;
 
   return 0;
 }
