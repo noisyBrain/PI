@@ -30,7 +30,7 @@ Node* addToStart(Node* head, Node* newNode) {
   return newNode;
 }
 
-Node* insertAtTheEnd(Node* init) {
+Node* getUserPrompt(Node* init) {
   int number;
   Node* newNode;
 
@@ -67,7 +67,7 @@ Node* insertAtTheEnd(Node* init) {
 int main () {
   Node *head = nullptr;
 
-  head = insertAtTheEnd(head);
+  head = getUserPrompt(head);
 
   for (Node* aux = head; aux != nullptr; aux = aux->next) {
     cout << aux->data << endl;
