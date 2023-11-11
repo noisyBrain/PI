@@ -30,38 +30,44 @@ Node* addToStart(Node* head, Node* newNode) {
   return newNode;
 }
 
-Node* getUserPrompt(Node* init) {
+Node *createNewNode(Node *head, int number) {
+  /*
+     newNode va a contener la dirección de
+     la memoria HEAP que se acaba de reservar
+  */
+  Node* newNode = new Node();;
+
+  /*
+     el campo data del nuevo nodo que creamos (newNode)
+     va a contener el dato que ingrese el usuario
+     y su next apuntará a nullptr por las dudas que sea
+     el primer nodo en la lista
+  */
+  newNode->data = number;
+  head = addToStart(head, newNode);
+
+  return head;
+}
+
+Node* getUserPrompt(Node* head) {
   int number;
-  Node* newNode;
 
   cout << "Ingresar un número (0 para cortar): ";
   cin >> number;
 
   while (number != 0) {
     /*
-       newNode va a contener la dirección de
-       la memoria HEAP que se acaba de reservar
-    */
-    newNode = new Node();
-
-    /*
-       el campo data del nuevo nodo que creamos (newNode)
-       va a contener el dato que ingrese el usuario
-    */
-    newNode->data = number;
-
-    /*
-       en init se guarda la dirección de memoria del
+       en head se guarda la dirección de memoria del
        nuevo nodo creado tal que ahora, el primer nodo
        de la lista, sea el último que se creó
     */
-    init = addToStart(init, newNode);
+    head = createNewNode(head, number);
 
     cout << "Ingresar un número (0 para cortar): ";
     cin >> number;
   }
 
-  return init;
+  return head;
 }
 
 int main () {
